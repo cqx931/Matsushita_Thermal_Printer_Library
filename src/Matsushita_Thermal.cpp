@@ -3,6 +3,7 @@
 
 // Constructor
 Matsushita_Thermal::Matsushita_Thermal(){
+  // pins
   pinMode(PIN_STEPPER_MOTOR_STEP, OUTPUT);
   pinMode(PIN_STEPPER_MOTOR_DIR, OUTPUT);
 
@@ -12,9 +13,10 @@ Matsushita_Thermal::Matsushita_Thermal(){
 
   pinMode(PIN_STEPPER_MOTOR_SLEEP, OUTPUT);
   //pinMode(PIN_STEPPER_MOTOR_RESET, OUTPUT);
+}
 
+void Matsushita_Thermal::init() {
   reset();
-
   // default direction
   digitalWrite(PIN_STEPPER_MOTOR_DIR, LOW);
 }
@@ -78,7 +80,7 @@ void Matsushita_Thermal::printLine(int w, uint8_t line) {
   // TODO
 }
 
-void Matsushita_Thermal::printBitmap(int w, int h, const uint8_t *bitmap,) {
+void Matsushita_Thermal::printBitmap(int w, int h, const uint8_t *bitmap) {
   // TODO
   // call printLine()
 }
@@ -92,16 +94,18 @@ void Matsushita_Thermal::printString(const char s) {
   // call printCh()
 }
 
-void Matsushita_Thermal::reverseMotor() {
+void Matsushita_Thermal::reverse() {
   digitalWrite(PIN_STEPPER_MOTOR_DIR, HIGH);
 }
 
-void Matsushita_Thermal::wakeMotor() {
+void Matsushita_Thermal::wake() {
+  // motor
   digitalWrite(PIN_STEPPER_MOTOR_SLEEP, HIGH);
   delay(1);
 }
 
-void Matsushita_Thermal::sleepMotor() {
+void Matsushita_Thermal::sleep() {
+  // motor
   digitalWrite(PIN_STEPPER_MOTOR_SLEEP, LOW);
 }
 

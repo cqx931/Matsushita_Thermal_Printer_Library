@@ -52,18 +52,18 @@ class Matsushita_Thermal {
 
   public:
     Matsushita_Thermal();
-    setHeat();
-    setSpeed();
-
-    feed();
-
-    printCh();
-    printString();
-    printBitmap();
-    printLine();
+    
+    void init(),
+    setHeat(uint8_t temp),
+    setSpeed(uint8_t time),
+    reverse(),
+    feed(uint8_t lines),
+    printString(const char s),
+    printBitmap(int w, int h, const uint8_t *bitmap);
 
   private:
-    void wakeMotor(), sleepMotor();
+    void wake(), sleep(),
+    printLine(), printCh(const char c);
     uint8_t readPrintHeadTemperature();
     uint16_t calculateHeatTime();
 };
